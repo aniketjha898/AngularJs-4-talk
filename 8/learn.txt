@@ -31,3 +31,17 @@ orderBy: " fieldName: order"
 fieldName could be salary or name or dob
 order is or inc or dec false is for inc and true is for decreasing
 orderBy: "+salary"  to sort in inc order of salary.  
+
+searchText:::
+filter: searchText 
+must apply at ng-repeat level
+
+::::::::::::::::::::::::::::::::::::::custom filters::::::::::::::::::::::::::::::::::
+
+filters are functions that return a anomynous function which return modified expression.
+
+first argument of filters is expression itself the one on which it was applied next are passes aruments wile using filters.
+
+{{ expression | add: value1, value2 }}
+
+return expression + value1 + value2;
