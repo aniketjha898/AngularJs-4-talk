@@ -1,0 +1,7 @@
+If we want to load html from different file ng-include is best choice.
+It lets you split the code b/w multiple templates.
+
+https://www.bennadel.com/blog/2740-replacing-nginclude-with-component-directives-in-angularjs.htm
+
+Best Discussion:
+https://github.com/johnpapa/angular-styleguide/issues/444

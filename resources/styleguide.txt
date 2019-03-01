@@ -1,0 +1,2 @@
+Styleguide:
+https://github.com/toddmotto/angularjs-styleguide
