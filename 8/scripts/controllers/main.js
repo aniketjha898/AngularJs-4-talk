@@ -15,6 +15,9 @@ function main($scope){
     $scope.employees = employees;
     $scope.rowsLimit = 3;
     $scope.startIndex = 0;
+
+    $scope.sortCriteria = "Name";
+    $scope.orderIorD = "Inc";
 };
 
 app.controller("main", main);

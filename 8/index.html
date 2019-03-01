@@ -14,6 +14,18 @@
         Limit(No. of Rows): <input type="number" min="0" max="{{ employees.length }}" ng-model="rowsLimit"/>
         <br/>
         Begin(Start row index): <input type="number" min="1" max="{{ employees.length  }}" ng-model="startIndex"/>
+        <br/>
+        SortBy: 
+        <select ng-model="sortCriteria">
+            <option value="name">Name</option>
+            <option value="dob">D.O.B</option>
+            <option value="salary">Salary</option>
+        </select>
+        <br/>
+        orderBy: <select ng-model="orderIorD">
+            <option value="false">Inc</option>
+            <option value="true">Dec</option>
+        </select>
     </div>
     <table>
         <thead>
@@ -23,7 +35,7 @@
             <th>Salary(currency)</th>
         </thead>
         <tbody>
-            <tr ng-repeat=" employee in employees  | limitTo: rowsLimit : startIndex - 1">
+            <tr ng-repeat=" employee in employees  | orderBy: sortCriteria: orderIorD | limitTo: rowsLimit : startIndex - 1 ">
                 <td>{{ employee.name | uppercase}}</td>
                 <td>{{ employee.dob | date: "dd/MM/yyyy"}}</td>
                 <td>{{ employee.salary | number: 2 }}</td>

@@ -23,3 +23,11 @@ d 8
 limitTo: limit: begin
 
 ng-repeat directive is responsible for looping the array so we can apply directive limitTo here.
+
+fancy filters
+
+sorting::::
+orderBy: " fieldName: order"
+fieldName could be salary or name or dob
+order is or inc or dec false is for inc and true is for decreasing
+orderBy: "+salary"  to sort in inc order of salary.  
