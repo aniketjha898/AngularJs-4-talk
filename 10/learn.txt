@@ -3,5 +3,13 @@ It lets you split the code b/w multiple templates.
 
 https://www.bennadel.com/blog/2740-replacing-nginclude-with-component-directives-in-angularjs.htm
 
+http://untangled.io/best-practice-for-using-ng-view-ng-include-and-directives-in-your-app/
+
 Best Discussion:
 https://github.com/johnpapa/angular-styleguide/issues/444
+
+ng-include vs directives
+simple if your html content needs to be a more static like means it doenot do many evalution on its own then use directive.
+Header is prefered(not its own manipultaion logic may include nested directives but.)
+but section of template that needs a lot of evalutaion like acordion, buttons, lists must be put in seprate directives.
+lists,  carousel, accordion or calendar.(its own manipulation logic)
