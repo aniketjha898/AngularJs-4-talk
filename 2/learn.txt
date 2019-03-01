@@ -1,0 +1,20 @@
+Module is main entry point of an application.
+It is like main() of java/c. Starting point of application.
+It specify how angular application needs to be bootstraped.
+
+1. In some scripts file
+2. Use angular obj provided by angular itself to create module.
+3. var app = angular.module("module_name", ["listofDependentsModules"]);
+
+Controller
+It is simply a Javascript function.
+It builds the model for view to display.
+It may be used to call api.
+1. var controller = function( $scope ){
+    $scope.msg = "Angular msg";
+}
+2. $scope is scope of tag where the controller was used.
+3. It is responsible for controlling that area.
+4. $scope holds refence to everthing inside tag.
+5. Print $scope and notice $watchers.It will inc in count as the {{}} in view inc.
+6. Move the controller on different divs to show that $scope only points to tag level controller it is used. 
