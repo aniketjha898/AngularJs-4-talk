@@ -1,0 +1,5 @@
+ng-show and ng-hide 
+are opposite of each other or are just ~
+On inspect elments we can see tag with show directive exist when it is supposed to be hidden in html form it is just thath it is hidden by css.
+display: block alteration.
+ng-If does same thing but it evalutes when condition meets and thus add to DOM only when cond was meet.

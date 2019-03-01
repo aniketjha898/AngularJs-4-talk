@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>9</title>
+    <script src="../resources/angular.min.js"></script>
+    <script src="scripts/module.js"></script>
+    <script src="scripts/controller/main.js"></script>
+</head>
+<body ng-contoller="main">
+    <input type="checkbox" ng-model="showOrHide"/>
+    {{ showOrHide }}
+    <div style="background-color:blue;height:200px;width:200px;" ng-show="showOrHide"></div>
+    <hr/>
+    <input type="checkbox" ng-model="showOrHideOnIf"/>
+    {{ showOrHideOnIf }}
+    <div style="background-color:red;height:200px;width:200px;" ng-if="showOrHideOnIf"></div>
+
+</body>
+</html>
