@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6</title>
+    <script src="../resources/angular.min.js"></script>
+    <script src="scripts/module.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+</head>
+<body ng-controller="main">
+    <div>
+        one way data binding.
+        <br/>
+        contoller->view
+        <br/>
+        {{ msg0 }}
+        <br/><br/>
+    </div>
+    <div>
+        <br/>
+        view -&gt; controler
+        view &lt;- controller
+        <br/>
+        <input type="text" ng-model="msg1"/>
+        <br/>
+        {{ msg1 }}
+        <br/><br/>
+        <input type="text" ng-model="msg2"/>
+        <br/>
+        {{ msg2 }} Y
+        <br/>
+        Y
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+One way dataBinfing is when model traveles from controller to view is done by {{ dataBinding }}.
+But if we want to have the value from view to travel to scope and also at same time seeiing scope value chage  by {{}} is called two way dataBinding.
+
+On View data is changed by events events such as click, typing into a input....
+
+ng-model
+To handle data change by events typing input box.
+Textarea, select, input.
+
+In the example msg0 is displayed by a one way dataBinding.
+
+In same exapmle msg1 and msg2 are displayed by two way dataBinding.
+msg1 has been put on $scope so reflect on input box in begning.
+and as and when it input box is typed on it updates model held by $scope.msg1 and thus gets reflected in next line via {{ msg1 }} dataBinding.
+thus the above clearly show two way dataBinding.
+
+In same example msg2 is not present on $scope but is created as a ng-model is placed on it at run time.
+And gets edited at same time.
+
+Note we have created a global ref for $scope and it is to be used from  to inspect ---> Paap h ye(It is a sin).
+
+Note ng-model on input creates a  entry in  $$watchers[] on $scope .
+$$watchers[]
+ng-model="msg1" it is one entry in $scope.$$watchers[]
+{{ msg1 }} is another entry on $scope.$$watchers[]
+thus watching for both creates a two way dataBinding.
+Note default  value of input is "" so $$watchers with last: "" is from ng-model
+while if $scope.msg1 exist and not undefined there will be entry for same as last:"Msg 1"
+and for msg2 you will find it as last: ""
