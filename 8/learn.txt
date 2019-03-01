@@ -1,0 +1,25 @@
+Filters 
+functions i.e used to format, sort, filter data.
+
+filter can be aaplied on bindingExpression or directive.
+{{ expression | filterName: param1: param2 }}
+
+lowercase
+upercase
+number: convert to 3 commas number
+currenncy 3based commas appended with currenncy
+
+date: "format"
+format for date filters.
+yyyy 1997
+yy 97
+MMMM July
+MMM Jul
+MM 07
+M 7
+dd 08
+d 8
+
+limitTo: limit: begin
+
+ng-repeat directive is responsible for looping the array so we can apply directive limitTo here.

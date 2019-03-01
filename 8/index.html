@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7</title>
+    <script src="../resources/angular.min.js"></script>
+    <script src="scripts/module.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+</head>
+<body ng-controller="main">
+    <div>
+        Limit(No. of Rows): <input type="number" min="0" max="{{ employees.length }}" ng-model="rowsLimit"/>
+        <br/>
+        Begin(Start row index): <input type="number" min="1" max="{{ employees.length  }}" ng-model="startIndex"/>
+    </div>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>D.O.B</th>
+            <th>Salary(number)</th>
+            <th>Salary(currency)</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat=" employee in employees  | limitTo: rowsLimit : startIndex - 1">
+                <td>{{ employee.name | uppercase}}</td>
+                <td>{{ employee.dob | date: "dd/MM/yyyy"}}</td>
+                <td>{{ employee.salary | number: 2 }}</td>
+                <td>{{ employee.salary | currency: "#": 1 }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
