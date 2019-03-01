@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7</title>
+    <script src="../resources/angular.min.js"></script>
+    <script src="scripts/module.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+
+    <link href="assets/css/main.css" rel="stylesheet" />
+</head>
+<body ng-controller="main">
+    <h3>Technology</h3>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Likes</th>
+            <th>Dislikes</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat=" technology in technologies">
+                <td>{{ technology.name }}</td>
+                <td>{{ technology.likes }}</td>
+                <td>{{ technology.dislikes }}</td>
+                <td>
+                    <button ng-click="likeOrDislike(technology, 1)">Like</button>
+                    <button ng-click="likeOrDislike(technology, -1)">Dislike</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

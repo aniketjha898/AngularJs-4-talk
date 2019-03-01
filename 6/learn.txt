@@ -17,7 +17,7 @@ thus the above clearly show two way dataBinding.
 In same example msg2 is not present on $scope but is created as a ng-model is placed on it at run time.
 And gets edited at same time.
 
-Note we have created a global ref for $scope and it is to be used from  to inspect ---> Paap h ye(It is a sin).
+Note we have created a global ref for $scope and it is to be used from  to inspect ---> Paap h ye(It is a sin). type scope every time you change something on model and check $$watchers[]
 
 Note ng-model on input creates a  entry in  $$watchers[] on $scope .
 $$watchers[]
