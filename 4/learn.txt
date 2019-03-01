@@ -1,0 +1,15 @@
+First way to display an image is hardcoding it in src like on any static page.
+
+To get it dynamically we will use {{ dataBinding }}.
+src="{{ image.src }}" where image is a property on $scope.
+
+Note on console we find 404 image request error ?
+First of all as index.html is being parsed a request is generated to 
+" %7B%7B%20image.src%20%7D%7D " which is nothing but
+    {{ image.src }}
+as till this instant angular didn't evaluted {{ image.src }} expression it made request to wrong resource and thus 404 error.
+When the parsing is completed and angular evalutes every {{ }} it puts expression values and a new request is made to server for image.
+Thus loaded in this request.
+This all took 2 request, having one as 404 error.
+Thus must use ng-src which evalutes and put value once complete parses an doesnot make any request in b/w.
+Only after parsing and evaluation it makes request for image resource.

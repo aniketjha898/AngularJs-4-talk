@@ -1,0 +1,21 @@
+ng-repeat is used to repeat a element tag several times in iterations of array data.
+ng-repeat = "sudent in students"
+is to be understood as 
+give me a sudent(element of array) in students(array).
+thus student var hold a element of student array while students is array itself.
+By default it is required that every data model of array data model needs to be unique in nature,
+this is required in order to track list of elements sowe need to use unique items.
+Default tracking is done by value of element.
+we must use unique Id provided by backend but if not avialable we may use element's index to track in case duplicate values.
+
+$index can be used to  find index value of current elemnet during iteration in current ng-repeat.
+$parent.$index thus will give index of parent in case parent is under ng-repeat
+
+Another way of finding parent index (recommended)
+if we dont have any Id prp so we will use $index in that case as default else id.
+on parent repeat place one more directie ng-init
+it is used to initailse some data that needs to accesed  inside this element tag.
+
+ng-init=" parentId = $index"
+(if Id exist then write student.id instead - recommended )
+ng-init=" parentId = sudent.id" 

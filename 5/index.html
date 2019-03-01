@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5</title>
+    <script src="../resources/angular.js"></script>
+    <script src="scripts/module.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+</head>
+<body ng-controller="main">
+    <table>
+        <thead>
+            <th>S.No.</th>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>TechStack</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat=" student in students track by student.userId" ng-init=" parentIndex0 = $index; parentIndex1 = student.userId">
+
+                <td>
+                    {{ $index }}
+                    {{ student.userId }}
+                </td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.branch }}</td>
+                <td>
+                    <ul>
+                        <li ng-repeat=" stack in student.techStack track by $index">
+                           techStack :{{stack}}
+                           <br/>
+                           parent: {{ $parent.$index }} {{ parentIndex0 }} {{ parentIndex1 }}
+
+                        </li>
+                    </ul>
+                </td>
+              
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
