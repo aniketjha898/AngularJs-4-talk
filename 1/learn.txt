@@ -1,0 +1,13 @@
+1. Include angular as a script file in index.html
+2. use ng-app to bootstrap the angular
+ng-app is a directive, It is starting point of our app.
+It angular first looks for this directive if found angular bootstrap itself and starts to watch.
+
+1. Put it at level of body tag.
+11 + 12 = {{ 11 + 12 }}
+{{ }} binding expression it takes it some dynamic content which is evaluted at run time.
+
+2. Now create two sibbling divs inside body tag and put same expression in both.
+we see that div with angular ng-app directive on it is resolved which means it is watched by angular, whereas second div is not watched by angular.
+So ng-app level element and its all children are watched by angular.
+Thus angular watches and is responsible for any change that occurs inside ng-app directive element level tag. 
