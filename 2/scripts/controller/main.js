@@ -7,4 +7,4 @@ function main($scope){
 
 };
 
-var main = app.controller("main", main);
+app.controller("main", main);

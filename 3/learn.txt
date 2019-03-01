@@ -1,0 +1,29 @@
+The job of controller is to build a model for a view.
+It does so by attaching model to $scope.
+$scope is not itself the model, model is the data you attach to $scope.
+In previous example we attached .msg0 to $scope so $scope is not model but it is the .msg property i.e the model.
+This model is then attached to view using the {{ dataBinding }} we extract the model/data using it.
+Model=>Logic=>Data, Data is Logic.
+Controller doenot directly manipulate the view, it is {{dataBinding}} & $scope that manipulate view.
+Thus MVC is clearly maintained as seprate identities.
+
+Controller is used for setting up initial state of $scope object and adding behaviour to it.
+
+we can add complex object like
+var student = {
+    firstName: "Aniket",
+    lastName: "Jha",
+    age: 21,
+    branch: "CSE"
+};
+$scope.student = student;
+Thus student propertyon $scope is our model.
+
+Experimenting:
+1. If we miss-spelled controller name it means that data binding operation is not evaluated it reamain as {{}}.
+2. It also produces error on console. 
+3. Errors are also minified as we are using .min.js
+4. For dev we may refer .js ( uncompressed )
+
+1. Property name is miss-spelled on model we get null/undefined which is not printed.
+2. No error are produced.
