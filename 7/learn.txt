@@ -1,1 +1,6 @@
 Event Handling
+click event can be registerd on any tag by ng-click directive.
+It needs a function to fire when evet occured.
+
+Adding functions to $scope is called adding behaviour to $scope.
+controller->initial state of $scope and add behaviour to it.
