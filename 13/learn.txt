@@ -1,0 +1,2 @@
+the core angular.min.js itself doesnot have routing functionality so we need a altogether differetn module.
+angular-route.min.js
