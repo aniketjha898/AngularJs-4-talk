@@ -78,3 +78,5 @@ obj for $routeChangeStart .
 
 when the routing is done $routeChangeSuccess  & $locationChangeSuccess
 
+
+Another good package for routing is UI Router.
