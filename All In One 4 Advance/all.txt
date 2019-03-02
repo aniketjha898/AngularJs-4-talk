@@ -1,0 +1,156 @@
+A client side js framework
+AngularJs Goal: 
+1) Seprate DOM manipulation from application logic.
+2) Sepration of concern using MVC.
+3) SPA developement easier.
+4) Provide solid foundation for robust/enterprises-scale js cleint side application.
+5) Extensiblity & Customization
+
+SetUp:
+1) Download AngularJs
+2) Refer in Script
+3) Create a module for our app. angular.module("moduleName", ["dependencyModule1","dependencyModule2"])
+    if we not provide second parameter it means retrive instance of module we might have created somewhere in our application
+    by providing second argument [] we say that we are creating new module here.
+4) ng-app at tag leve.
+    When you fire your page angular looks for this.
+    It defines angular application, as and when it get these attribute somewhere in html code it does
+    know that from this point onward i have to do my magic.
+    ng-app="moduleName" we refer our app to this module.
+    we recommend only one ng-app on page
+5) {{ angularExpression }} it is js statement it cannot contain any complex statement like loop or if-else
+    whenever these expression are seen angular js needs to evalute this epression and replace it with a evaluted expression.
+
+
+Angular Process::::
+
+1) AngularJs is included and executed
+2) Angular Module gets created (if we added)
+3) Finds templates = ( every html that has some angular code in it ng-( directive ) , {{ angularExpression }})
+4) Process Templates 
+    4.1) Compile templates : Internally angular js has a html compiler different from browser, 
+         angular engine gets kicked in as soon as templates are identified and will try to compiler,
+         evalute template for any errors once successullly done move on
+    4.2) Loads template: in browser memorary it as duplicate instance and links up/glue them(later disscusion)
+    4.3) Transform Template : evalutaion of template all types and return DOM finally and will send brower for rendering.
+         It sends compiled DOM thus all evaluted values were send to brower renderer, angular however deals with its instance 
+         of DOM which involve expressions and brower is abstracted from this it only knows of angular compiled DOM which was 
+         handed to it.  
+
+Controllers::::::
+
+1) Controllers are javascript object which conatins logic. moduleName.controller("controllerName", function(){ this.name = "aniket"; }) , second argument is defination of contoller a function.
+2) Controllers are responsible for sending data to controller and recove data from controllers.
+3) ng-controller = " controllerName as O ", consider Controllers as classes  & function(){ this.name = "aniket" } 
+   can be considered as classes and instance instance is done by "as" keyword and held in ref  "O"."O" is instance 
+   and holds data(model).Used as {{ O.name }}.
+4) {{ angularExpression }} exposes data(model) from contoller to view called as one way data binding.
+
+Module                             Markup
+---->Controller1-----(model/data)------>View1(templates)( view binds to model not to controller, View react to contoller and evalutes model recived )
+|    Controller2
+|    Controller3
+|
+|
+|________ WebService
+            Databse (Contoller works with webservice to pull data/model.)
+
+
+Scope::::::::
+
+1) var app = angular.module("app", []);
+2) app.contoller("main", function(){ this.name = "aniket";});
+1 => creates a space module and instance it, instance is stored in "app" var
+2 => here we are creating defination of controller but not is instance and is now avialble inside module "app" i.e defination of controller "main" is created inside module "app"
+
+3) <div ng-contoller="main">
+   </div>
+3 => in this case we declare that this div is going to closely work with contoller called "main",
+    it creates a boundary of memorary and that boundary is striclty sheilded and so it doesnot expose 
+    its data to outer world. It so create a context variable, which can have some data called "name", 
+    we can associate data to this context, it is not visble to user, it is logical context, may have 
+    methods,<div> is mapped to this controller context this context is called scope.Only this <div> 
+    is mapped to scope of this contoller in memorary.
+    scope (a space in memorary)
+    scope is mapped to module instance of contoller
+    scope is mapped to div it was put on i.e template has access to scope of contoller.
+    angular sees everthing inside <div> as its scope and scope is mergerd into contoller thus 
+    "this.name" var in controller function defination and scope obj from DOM all are merged 
+    into one refered as scope.
+    contoller has direct access to scope only.
+    DOM/view has direct access to contoller only and thus the transfer of information takes place 
+    though scope only.i.e whenever contoller has to send some data/model to scope it sends it along 
+    scope, same way view sends some data/model along scope only. 
+    Angular evalutes scope to present instance of scope.If available then retrived else it moved ahead.
+    $scope can be injected during function defination that will hold scope as $scope var.
+
+Noteable pt.
+    js minimiser may minimise $scope in our functional defination and replace it with some vaiable such as "x".
+    which will break the code as "x"  is not knownto angular so we use different way of defininig
+    app.contoller("main",["$scope","listOfInjectionInOrderAsInFuncParams", function($scope, listOfInjectionInOrderAsInFuncParams){}]);
+    it ensure even if any minimise occur it does match ["injections",function(cMinParamName){}]
+
+when we put ng-controller angular add class="ng-scope ng-binding"
+
+select some element and in console "$0" exceute
+it gives DOM representaion of it.
+now angular.element($0)
+will give angular represntaion of it. 
+JQLite[h1]
+TO see scope
+angular.element($0).scope()
+Now we want to access some var in its scope
+angular.element($0).scope().name
+it will give current value of "name" on scope
+what if we do angular.element($0).scope().name = "changedValueFromConsole"
+It doesnot relfect in view though value has changed.To reflect this in view 
+angular.element($0).scope().$digest() this time it will be reflected. (later)
+hybrid syntax ( controler as and $scope traditional)
+app.controller("main", ["$scope", function($scope){
+
+    $scope.o = this;
+    this.name = "Aniket";
+
+}]);
+(pesonaly like contoller as syntax.)
+
+
+Nested contoller:::::
+07. var app = angular.module("app", []);
+08. app.controler("main", function($scope){ $scope.name = "Aniket"; this.age = 21; });
+09. app.contoller("student", function($scope){ $scope.name = "Manaya "; this.age = 20; this.region: "Hyderabad" }); </script>
+10.</head>
+11. <body ng-controller="main">
+12.      {{ name }}
+13.      <div ng-contoller="student">
+14.         {{ name }} 
+15.         <br/>
+16.         {{ age }}
+17.      </div>
+18. </body>
+
+As parsing start it reaches line 07 it instanctiate a new module and holds its refrence in "app" var.
+At line 08 and 09 controler defination are created and attached to module.
+At line 11 directive ng-controler is found and so angular looks for main contoller defination 
+    and instanctiate it, it then create a scope in memorary and binds it to DOM element directive 
+    was used on, then it binds this scope to controller in module and angular runs registerd 
+    functional defination of this contoller.As function gets executed it then initialises scope 
+    it is here when name property is made available on controller and controller scope is initialised.
+At line 12 it try to find {{ angularExpression }} i.e {{ name }} in scope object in present DOM 
+    associated context. Thus pulls value from scope.
+At line 13 it found ng-contoller again and thus it make a new scope "student" inside scope "main", 
+    it is thus nested. As this is nested all properties of "main" scope are made available to 
+    "student" scope this is called as scope inheritance. Now instance of controller "student" is 
+    created inside module then angular exceute its function defination that was registerd with us.
+    Now we see thath current scope "student" has its properties name, region all properties thath 
+    are repeated in this scope are overriten by functional executed values.So name in scope "student" 
+    is "Manaya" age = 20, region = "Hyderabad"  
+
+Roots Scope & Scope inheritance::::::::
+
+$rootScope is parent scope it is created at instant ng-app was mentioned thus is parent scope of app.
+And all scopes by ng-controller is sub scopes.
+Needs to be injected if want to be used.as $rootScope in contoller.
+not recommend to use for gloabalisation.
+
+
