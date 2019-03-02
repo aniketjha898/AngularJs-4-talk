@@ -54,3 +54,27 @@ in controller write $scope.fetchData();
 contoller run only once.
 every time the route /abc is hit contoller will run and running will call fetchData.
 Thus reloading functionality achived in case data needs to fetched every time routing is required.
+
+whenever route change occurs two event get fired $routeChangeStart and $locationChangeStart
+thus they can be used to do something before navigating like confirming wheater user want to leave 
+current page and navigate to another page.
+
+inside present spa view contoller 
+listen for events as
+
+$scope.$on("$routeChangeStart", function(routeEvent, nextRoute, currentRoute){});
+or 
+$scope.$on("$locationChangeStart, function(routeEvent, nextRoute, currentRoute){});
+
+$scope.$on("$locationChangeStart, function(routeEvent, nextRoute, currentRoute){
+    if( ! confirm( " Are you sure you want to navigate to " + nextRoute.$$route.originalPath ) ){
+        event.preventDefault();
+        //if cancelled route dont route to that page.     
+    }
+});
+
+diffrence b/w the two is that the $locationChangeStart nextRoute, currentRoute params are url unlike 
+obj for $routeChangeStart .
+
+when the routing is done $routeChangeSuccess  & $locationChangeSuccess
+

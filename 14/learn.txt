@@ -1,0 +1,2 @@
+$scope is available for that element level tag on which the contoller was placed and
+no other space while $rootScope is avialable everywhere.

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "myapp" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>14</title>
+
+    <script src="../resources/angular.js"></script>
+    <script src="scripts/module.js"></script>
+    <script src="scripts/controllers/red.js"></script>
+    <script src="scripts/controllers/green.js"></script>
+</head>
+
+<body>
+    <div class="red" ng-controller="redCtrl">
+        <h1>Red Contoller color:: {{color}}</h1>
+        <h1>Root Contoller color:: {{colorRoot}}</h1>
+    </div>
+    <div class="green" ng-controller="greenCtrl as gCt">
+        <h1>Contoller color:: {{color}}</h1>
+        <h1>Root Contoller color:: {{colorRoot}}</h1>
+        <h1></h1>
+    </div>
+</body>
+
+</html>
