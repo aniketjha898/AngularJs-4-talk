@@ -1,0 +1,62 @@
+A service is any object that provide some sort of functionality that can be used anywhere in application.
+
+Controller responsiblity is to build model for the view,
+so if controler does some computation like finding age from dob then it must belong to ageService,
+also if there is code repeatation accross the controllers in application then we have to see that 
+if reusblity can be implied by using a object which provide a function for same functionality thus
+following SOLID principle.
+Resuablity is enhanced as same functionality can be used at many pts. in application.
+
+Benifits
+
+Resuablity,
+Dependency Injection(use where neccessary thus inject there only),
+Testablity(service can be unit tested independently).
+
+Two main execution characteristics of angular services are that they are singleton and lazy
+instantiated. Angular only creates instance of a service when an application component depends
+on it. On the other hand each application component dependent on the service work with the single
+instance of the service created by the angular.
+
+Using the service() method uses the function constructor and it returns the object or instance of
+the function to work with
+
+Using the factory() method uses the returned value of the function.
+It returns the value of the function returned after the execution
+Factory:::::
+When you’re using a Factory you create an object, add properties to it, then return that same object.
+When you pass this factory into your controller, those properties on the object will now be available
+in that controller through your factory.
+
+app.controller(‘myFactoryCtrl’, function($scope, myFactory){
+  $scope.artist = myFactory.getArtist();
+});
+
+app.factory(‘myFactory’, function(){
+  var _artist = ‘Shakira’;
+  var service = {};
+
+  service.getArtist = function(){
+    return _artist;
+  }
+
+  return service;
+});
+Service:::::
+When you’re using Service, AngularJS instantiates it behind the scenes with the ‘new’ keyword.
+Because of that, you’ll add properties to ‘this’ and the service will return ‘this’.
+When you pass the service into your controller, those properties on ‘this’ will now be available
+on that controller through your service.
+
+app.controller(‘myServiceCtrl’, function($scope, myService){
+  $scope.artist = myService.getArtist();
+});
+
+app.service(‘myService’, function(){
+  var _artist = ‘Nelly’;
+  this.getArtist = function(){
+    return _artist;
+  }
+});
+
+
