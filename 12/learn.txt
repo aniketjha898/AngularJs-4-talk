@@ -1,0 +1,4 @@
+$anchorScroll is used to scroll to certain position in page.
+$location is used to append # fragment as pt. where we are required to scroll.
+$location.hash(fragmentPtName) this method will add #fragmentPtName in url.
+Thus $anchorScroll will detect url and scroll to that pt.
