@@ -2,6 +2,9 @@
 html {
   overflow-x: hidden;
 }
+#wrapper{
+  margin: 70px auto;
+}
 
 body {
   background: #fff;
