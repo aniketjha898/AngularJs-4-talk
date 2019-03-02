@@ -1,2 +1,56 @@
 the core angular.min.js itself doesnot have routing functionality so we need a altogether differetn module.
 angular-route.min.js
+
+1)create spa pages in view/spa
+2)put ng-href instead of href
+3)spa route angular config to configure all templateUrls and configurations
+4)ngRoute modlue thath handles routing so need by our app module nne dto mention in app module
+5)in spa route config. all you need to do is inject $routeProvider to handle routing functionality
+    $locationProvider.html5Mode(true) eliminates # from url.
+6)pasing data as route param /blog/:postId which maps to url /blog/2 then postId = 2 thus $routeParam.postId
+
+7)base href must be first line after meta, title in head
+
+Contoller as syntax:::::::::::::::
+$scope is not injected
+rather all properties are are attached on this of function, this.message = message.
+in the config{
+    controller: "controllerName as ctrlName",
+
+}
+or
+{
+    controller: "controllerName",
+    controllerAs: "ctrlName
+}
+{{ ctrlName.message }} thus this kind of bring a contoller binding if message prop existed at
+several places in our app this would help to bind it to some specific controller always.
+
+$scope is old technique while contoller as syntax was newly introduced.
+Angular use $scope behing the scene evenn if it doesnot seem to exist in controller as syntax.
+
+By default routes in spa route config is case sensetive and thus url for same route but some route words
+capitailise lead to 404 match or otherwise case so we need to put caseInsensetiveMatch in each routeConfig as true
+{
+    templateUrl: "views/spa/home.html",
+    controller: "homeController as homeCtrl",
+    caseInsensetiveMatch: true
+
+}
+setting it individually on all is a bit much effort if we want o set it on all routes at once use
+$routeProvider.caseInsensetiveMatch = true; before configuring .when routes.
+
+note whenever we want to reload using brower f5 button it reloads all resource required to application.
+even if we wanted to reload a single route it will realod entire resouces required by applications
+once again but this is not what should happen.
+
+We can put a reload button on the page that is expected to reload mannually pressing that button will reload the route.
+To do so simply inject a $route sevice in controller for this route and
+$scope.reloadBtn = function(){ $route.reload() }
+
+But no body really gives a shit about mannula reloading.
+$scope.fetchData = function(){}
+in controller write $scope.fetchData();
+contoller run only once.
+every time the route /abc is hit contoller will run and running will call fetchData.
+Thus reloading functionality achived in case data needs to fetched every time routing is required.

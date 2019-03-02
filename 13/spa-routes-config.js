@@ -1,10 +1,14 @@
 
 app.config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
+
+    $routeProvider.caseInsensetiveMatch = true;
+
     $routeProvider
         .when('/',{
             templateUrl: 'views/spa/home.html',
-            // controller: 'homeController'
+            // controller: 'homeController',
+            caseInsensetiveMatch: true
         })
         .when('/feature',{
             templateUrl: 'views/spa/feature.html'
@@ -27,10 +31,14 @@ app.config(function($routeProvider, $locationProvider){
         .when('/blog', {
             templateUrl: 'views/spa/blog.html'
         })
+        .when('/blog/:postId', {
+            templateUrl: 'views/spa/post.html'
+        })
         .when('/contact', {
             templateUrl: 'views/spa/contact.html'
         })
         .otherwise({
-            template:"<h1>Page not Found</h1>"
+            template: "<h1>404 ---- Page not found</h1>"
+            // redirectTo:"/"
         })
 });
