@@ -154,3 +154,84 @@ Needs to be injected if want to be used.as $rootScope in contoller.
 not recommend to use for gloabalisation.
 
 
+Data Binding:::::::::: 
+It is link b/w view and contoller.
+Its job is to establish connection and sync the data.
+
+One way::
+Data travels from scope to view.
+Scope Data :    
+    All data in scope is propogated to view.
+    Any data modification is propogated immediately and reflected in view.
+ViewData :
+    No propogation back to sope for any data change in view.
+Usually performed through ng-bind or evalutaion expression.{{ angularExpression }}
+
+
+View                                |               Controller         
+<div ng-contoller="main">           |   $scope.name= "aniket"
+    {{ name }}                      |
+    <br/>                           |
+    <span ng-bind="name"></span>    |
+</div>                              |
+
+Dont work with input based element.
+
+
+
+Two way data binding::
+Data flows from scope to view and view to scope.
+Scope Data:
+    Get propogated to view.
+    Data modificaiotn is propogated into view and reflected immediately.
+View Data:
+    Gets propogated to scope.
+    Data modification: propogates to scope immediately and gets reflected in scope.
+Usually done by ng-model
+
+One time::
+The very first time contoller is initialised data propogates to view.
+Data flows from scope to view.
+Scope Data:
+    Gets propogated to view only once for first time
+    Any data modificaiotn thereafter are not propogated.
+View Data:
+    No data propogation.
+Perfomed through :: as part of evalutaion expression
+
+Service:::::::
+A special unit of code which can be used across different contollers.
+It is a utility or business logic.
+Contollers are just ment to serve data/model to view. No computation, no ajax, simple plain thin controller.
+
+Contollers are created as soon as it is found on DOM i.e present route DOM. And get destoyed as soon as route change.
+Thus a contoller runs only once and instanctiate for a particular route where used in DOM. 
+
+Service is singleton::
+    Instanctiate only once
+    Same instance is used throughout lifetime of application.
+        Contradictory to contollers which are created as and when needs and destoyed if not in use.
+    Service get created lazily and loaded lazily.
+        Contradictory contollers are created as soon as a newly created view ask for a controller.
+        Whenever a contoller ask for a Service at time of instanctiation the service required by it gets created if not present.
+    Module can have many service and many contoller can use many service, many service may be using each other.
+
+Custom service::
+Factory: It is done by calling .factory( “serviceName”, function( ){ } ) on module instance. The function return a object { } (serviceObj). The object has methods attached to it which are to be used by us as a service. It is injected in controller. ( Personal favourite )
+Service: It is done by calling .service( “serviceName”, function( ){ } ) on module instance. The function here work as functional constructor and thus we attach properties on “this” keyword available inside the function. It is inject normally, but it is job of angular to call it with “new” keyword and return us “this”= object(serviceObj).
+Provider: It is used whenever something is needed to be done in very beginning of app such that it may be available to all other in future. I personally don't use it too often. (Study on your own)
+
+
+Filters:::
+A filter is a function i.e used to modify a angular expression.Expression is used to perform some manipulation be it formating or something more complex.
+Used to:
+    Format data.
+    Transform data.
+    Search/ filter data.
+Can be used inside 
+    Templates, contollers, service
+template 
+{{ name | uppercase }}
+controller : inject "$filter"
+ use as $filter("nameOfFilter")(argumentsToFilter);
+    
