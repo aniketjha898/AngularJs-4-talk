@@ -1,7 +1,7 @@
 1. Include angular as a script file in index.html
 2. use ng-app to bootstrap the angular
 ng-app is a directive, It is starting point of our app.
-It angular first looks for this directive if found angular bootstrap itself and starts to watch.
+The angular first looks for this directive if found angular bootstrap itself and starts to watch.
 
 1. Put it at level of body tag.
 11 + 12 = {{ 11 + 12 }}

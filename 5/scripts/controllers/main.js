@@ -20,7 +20,7 @@ function main($scope){
     ];
 
     $scope.students = studentsWithTechStack;
-
+    $scope.techs = ["a", "b", "a"];
     console.log($scope);
 }
 app.controller("main", main);

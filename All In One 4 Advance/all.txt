@@ -117,8 +117,8 @@ app.controller("main", ["$scope", function($scope){
 
 Nested contoller:::::
 07. var app = angular.module("app", []);
-08. app.controler("main", function($scope){ $scope.name = "Aniket"; this.age = 21; });
-09. app.contoller("student", function($scope){ $scope.name = "Manaya "; this.age = 20; this.region: "Hyderabad" }); </script>
+08. app.controler("main", function($scope){ $scope.name = "Aniket"; this.age = 21; this.company = "Facebook" });
+09. app.contoller("student", function($scope){ $scope.name = "Manaya"; this.age = 28; this.region: "Hyderabad"; this.company="HSBC" }); </script>
 10.</head>
 11. <body ng-controller="main">
 12.      {{ name }}
@@ -144,7 +144,7 @@ At line 13 it found ng-contoller again and thus it make a new scope "student" in
     created inside module then angular exceute its function defination that was registerd with us.
     Now we see thath current scope "student" has its properties name, region all properties thath 
     are repeated in this scope are overriten by functional executed values.So name in scope "student" 
-    is "Manaya" age = 20, region = "Hyderabad"  
+    is "Manaya" age = 28, region = "Hyderabad"  
 
 Roots Scope & Scope inheritance::::::::
 
@@ -234,4 +234,31 @@ template
 {{ name | uppercase }}
 controller : inject "$filter"
  use as $filter("nameOfFilter")(argumentsToFilter);
-    
+
+
+Custom directive:::
+
+Components: 
+    element based directive i.e a html tag
+Decoraters:
+    enhance functionality of already existing element eg. ng-show,
+templating:
+    directive that manipulate element
+
+var app = angular.module("app",[]);
+app.controller("main", function($scope){
+    $scope.msg = "Aniket";
+});
+
+app.directive("infoMsg", function(){
+    return {
+        template: '<h1>This is a message directive, {{ msg }}</h1>',
+        // templateUrl: "info-msg.html",
+    };
+}); /// used as info-msg
+
+
+<body ng-controller = "main">
+<div info-msg></div>
+<info-msg></info-msg>
+</body>

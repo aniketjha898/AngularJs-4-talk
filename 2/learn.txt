@@ -15,6 +15,6 @@ It may be used to call api.
 }
 2. $scope is scope of tag where the controller was used.
 3. It is responsible for controlling that area.
-4. $scope holds refence to everthing inside tag.
+4. $scope holds refence to everything inside tag.
 5. Print $scope and notice $watchers.It will inc in count as the {{}} in view inc.
 6. Move the controller on different divs to show that $scope only points to tag level controller it is used. 
