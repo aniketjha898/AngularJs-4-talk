@@ -262,3 +262,40 @@ app.directive("infoMsg", function(){
 <div info-msg></div>
 <info-msg></info-msg>
 </body>
+
+
+Process of exceution of directive:-
+1. Compile
+        Loads any the present directive DOM, and start to travesrse it, in the process it looks for any nested directive.
+        Compile and load each of present directives found as nesteds.
+        COmpilation occurs for both all directive built in as well as cutom,
+        If we want to run some code during compilation process it can be mentionsed in complie function in directive.
+        app.directive("infoMsg", function(){
+            return {
+                compile: function(tElement, tAttributes){
+                    //code as part of compilation process....
+                }
+            };
+        });
+        tElement is template avialble, tAttributes is attribute to tag/template.
+2. Link 
+        Multi process job.
+        As part of linking process it clones template in memorary.
+        It works on clone not directly on template.
+        Works on new instance of template which is previously compiled
+        3 phases of templates linking
+            Controller, Pre, Post.
+        After linking done rendering occurs.
+
+Compile - > Contoller -> Pre-Link -> Post-Link
+
+Compile:
+* Loads and travesrse Template DOM.
+* Excute only once.
+* Returns link function.
+* No scope present.
+* No instance or clone of template created yet.
+* Do operations which can be shared b/w all instances/clones.
+* Can manipulate DOM.
+* Cannot play with event or data of DOM.
+* No DOM Clones available.
