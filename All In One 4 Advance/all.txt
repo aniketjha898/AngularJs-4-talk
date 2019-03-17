@@ -299,3 +299,21 @@ Compile:
 * Can manipulate DOM.
 * Cannot play with event or data of DOM.
 * No DOM Clones available.
+
+After this a clone instance is created here.
+
+Controller:
+* This is frst to be exceuted after a instnce is available,
+* scope gets created, can modify data of instance,
+* Dont touch instance DOM itself here.
+
+Pre-Link:
+* It immediately exceuted on this same instance.
+* Ref. to DOM of instance is avialble here.
+* Scope for instance is ready.
+* Instance is not linked to scope yet nothing like binding is setup here.
+* Scope is intialised and can modify data.
+* Child elements/directives are not ready yet.
+* Not save to manipulte DOM instance here, No child access.
+
+Post-Link:
